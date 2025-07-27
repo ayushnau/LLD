@@ -1,4 +1,4 @@
-package com.conceptcoding.singleresponsibility.solution;
+package com.conceptcoding.video1solid.singleresponsibility.solution;
 
 // GOOD: Following SRP - Each class has a single responsibility
 

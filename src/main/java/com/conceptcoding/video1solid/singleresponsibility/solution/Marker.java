@@ -1,4 +1,4 @@
-package com.conceptcoding.singleresponsibility.solution;
+package com.conceptcoding.video1solid.singleresponsibility.solution;
 
 public class Marker {
     String name;

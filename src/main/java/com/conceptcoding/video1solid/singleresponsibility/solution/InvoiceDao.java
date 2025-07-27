@@ -1,4 +1,4 @@
-package com.conceptcoding.singleresponsibility.solution;
+package com.conceptcoding.video1solid.singleresponsibility.solution;
 
 // Responsibility 2: Managing Database Operations only
 public class InvoiceDao {

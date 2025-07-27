@@ -1,4 +1,4 @@
-package com.conceptcoding.singleresponsibility.violation;
+package com.conceptcoding.video1solid.singleresponsibility.violation;
 
 // BAD: This class violates SRP by having multiple responsibilities
 public class Invoice {

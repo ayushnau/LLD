@@ -1,4 +1,4 @@
-package com.conceptcoding.singleresponsibility.solution;
+package com.conceptcoding.video1solid.singleresponsibility.solution;
 
 // Usage example showing how all classes work together
 public class SolutionDemo {

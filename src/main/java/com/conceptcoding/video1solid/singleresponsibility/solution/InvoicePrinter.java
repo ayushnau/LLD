@@ -1,4 +1,4 @@
-package com.conceptcoding.singleresponsibility.solution;
+package com.conceptcoding.video1solid.singleresponsibility.solution;
 
 // Responsibility 3: Printing the Invoice only
 public class InvoicePrinter {
