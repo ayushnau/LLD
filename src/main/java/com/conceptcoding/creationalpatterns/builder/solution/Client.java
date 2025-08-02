@@ -4,7 +4,7 @@ package com.conceptcoding.creationalpatterns.builder.solution;
 public class Client {
 
     public static void main(String[] args) {
-        System.out.println("===== Builder Pattern =====");
+        System.out.println("===== Builder Design Pattern =====");
         // Create director objects
         StudentRegistrationDirector enggStudentDirector = new StudentRegistrationDirector(new EngineeringStudentBuilder());
         StudentRegistrationDirector mbaStudentDirector = new StudentRegistrationDirector(new MBAStudentBuilder());

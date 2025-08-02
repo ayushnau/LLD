@@ -3,6 +3,8 @@ package com.conceptcoding.creationalpatterns.singleton;
 // Test Singleton Implementation
 public class SingletonDemo {
     public static void main(String[] args) {
+        System.out.println("======= Singleton Design Pattern ======");
+
         System.out.println("====== Testing Eager Initialization ======");
         // SingletonObject obj = new SingletonObject(); --> Compilation error
         // Get the unique instance of SingletonObject

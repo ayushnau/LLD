@@ -12,6 +12,7 @@ enum ShapeType {
 public class SimpleFactoryDemo {
 
     public static void main(String[] args) {
+        System.out.println("======= Simple Factory Design Pattern ======");
 
         // set the type you want
         ShapeType type = ShapeType.CIRCLE;
