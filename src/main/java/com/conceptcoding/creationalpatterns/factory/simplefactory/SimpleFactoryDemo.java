@@ -12,7 +12,7 @@ public class SimpleFactoryDemo {
         // set the type you want
         ShapeType shapeType = ShapeType.SQUARE;
         // get the shape
-        Shape shape = ShapeFactory.createShapeInstance(shapeType);
+        Shape shape = ShapeFactory.createShape(shapeType);
         shape.draw();
         shape.computeArea();
     }

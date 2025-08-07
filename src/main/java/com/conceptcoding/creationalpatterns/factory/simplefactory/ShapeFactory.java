@@ -3,7 +3,7 @@ package com.conceptcoding.creationalpatterns.factory.simplefactory;
 import com.conceptcoding.creationalpatterns.factory.*;
 
 public class ShapeFactory {
-    public static Shape createShapeInstance(ShapeType shapeType) {
+    public static Shape createShape(ShapeType shapeType) {
         if (shapeType == null) {
             return null;
         }
