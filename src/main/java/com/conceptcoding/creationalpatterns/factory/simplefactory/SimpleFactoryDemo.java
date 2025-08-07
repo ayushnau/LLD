@@ -2,11 +2,9 @@ package com.conceptcoding.creationalpatterns.factory.simplefactory;
 
 import com.conceptcoding.creationalpatterns.factory.Circle;
 import com.conceptcoding.creationalpatterns.factory.Rectangle;
+import com.conceptcoding.creationalpatterns.factory.Shape;
 import com.conceptcoding.creationalpatterns.factory.Square;
-
-enum ShapeType {
-    CIRCLE, RECTANGLE, SQUARE
-}
+import com.conceptcoding.creationalpatterns.factory.simplefactory.ShapeFactory;
 
 // Step 3: Simple Factory Demo (Bloated Design)
 public class SimpleFactoryDemo {
@@ -15,24 +13,11 @@ public class SimpleFactoryDemo {
         System.out.println("======= Simple Factory Design Pattern ======");
 
         // set the type you want
-        ShapeType type = ShapeType.CIRCLE;
-
-        switch (type) {
-            case CIRCLE:
-                Circle circle = new Circle();
-                circle.draw();
-                circle.computeArea();
-                break;
-            case RECTANGLE:
-                Rectangle rectangle = new Rectangle();
-                rectangle.draw();
-                rectangle.computeArea();
-                break;
-            case SQUARE:
-                Square square = new Square();
-                square.draw();
-                square.computeArea();
-                break;
-        }
+        ShapeType shapeType = ShapeType.SQUARE;
+        // get the shape
+        Shape shape = ShapeFactory.createShapeInstance(shapeType);
+        shape.draw();
+        shape.computeArea();
     }
+
 }
