@@ -7,12 +7,6 @@ import com.conceptcoding.creationalpatterns.factory.Shape;
 public abstract class ShapeFactory {
 
     // Factory method - to be implemented by subclasses
-    public abstract Shape getShapeInstance();
+    public abstract Shape createShape();
 
-    // Template method that uses the factory method
-    public void performOperations() {
-        Shape shape = getShapeInstance();
-        shape.draw();
-        shape.computeArea();
-    }
 }

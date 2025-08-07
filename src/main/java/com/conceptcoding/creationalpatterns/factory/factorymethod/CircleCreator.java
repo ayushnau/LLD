@@ -7,7 +7,7 @@ import com.conceptcoding.creationalpatterns.factory.Shape;
 public class CircleCreator extends ShapeFactory {
 
     @Override
-    public Shape getShapeInstance() {
+    public Shape createShape() {
         return new Circle();
     }
 }

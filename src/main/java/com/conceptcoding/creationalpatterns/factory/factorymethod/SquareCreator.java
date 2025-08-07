@@ -6,8 +6,9 @@ import com.conceptcoding.creationalpatterns.factory.Square;
 
 // Step 4: Concrete Creator classes
 public class SquareCreator extends ShapeFactory {
+    
     @Override
-    public Shape getShapeInstance() {
+    public Shape createShape() {
         return new Square();
     }
 }
