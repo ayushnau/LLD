@@ -28,7 +28,7 @@ public class EmployeeManagement {
         hr.getEmployeeInfo();
         hr.displayEmployeeDetails();
         // hr.createEmployee(); // Access Denied
-        hr.updateSalary(30000.00); // Access Denied
+        hr.updateSalary(30000.00);
         // hr.deleteEmployee(); // Access Denied
 
         // Demo for MANAGER user
