@@ -5,7 +5,6 @@ public class Demo {
         System.out.println("Word Processor: Issue Demo");
         // Data: "Hello World"
         // Total 11 characters
-        // t = 2 times
         // h = 1 time
         // e = 1 time
         // l = 3 times
@@ -13,6 +12,7 @@ public class Demo {
         // w = 1 time
         // r = 1 time
         // d = 1 time
+        // ' ' = 1 time
 
         // Create 11 character objects
         Character object1 = new Character('H', "Arial", 10, 0, 0);

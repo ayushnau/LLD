@@ -5,8 +5,7 @@ public class WordProcessorSimulation {
     public static void main(String[] args) {
         System.out.println("====== Flyweight Design Pattern ======");
         // Data: "Hello World"
-        // Total 12 characters (including space)
-        // t = 2 times (reused)
+        // Total 11 characters (including space)
         // h = 1 time
         // e = 1 time
         // l = 3 times (reused)
