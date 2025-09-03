@@ -15,7 +15,7 @@ public class PushNotificationObserver implements StockNotificationObserver {
     @Override
     public void notify(IphoneProduct iphoneProduct) {
         System.out.println("!! PUSH NOTIFICATION SENT to: " + deviceToken
-                + " for " + iphoneProduct.getProductName()
+                + " for " + iphoneProduct.getProductName() + "."
                 + " Your wishlist item is available now.");
     }
 
