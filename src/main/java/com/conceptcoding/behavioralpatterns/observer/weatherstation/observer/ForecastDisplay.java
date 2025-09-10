@@ -1,34 +1,26 @@
 package com.conceptcoding.behavioralpatterns.observer.weatherstation.observer;
 
-import com.conceptcoding.behavioralpatterns.observer.weatherstation.observable.WeatherStation;
+import com.conceptcoding.behavioralpatterns.observer.weatherstation.observable.WeatherObservable;
 
 // Concrete Observer 4 - Forecast Display - Predicts weather based on pressure changes
 public class ForecastDisplay implements WeatherObserver {
-    private final WeatherStation weatherStation;
-    private float currentPressure = 29.92f;
-    private float lastPressure;
+    private final WeatherObservable weatherStation;
 
-    public ForecastDisplay(WeatherStation weatherStation) {
+    public ForecastDisplay(WeatherObservable weatherStation) {
         this.weatherStation = weatherStation;
         weatherStation.addObserver(this);
     }
 
     // ForecastDisplay implements the update method in its own way
     @Override
-    public void update(WeatherStation weatherStation) {
-        lastPressure = currentPressure;
-        currentPressure = weatherStation.getPressure();
+    public void update() {
+        System.out.println("Updating weather data to do some analytics: " + weatherStation.toString());
         display();
     }
 
     // Display the forecast based on the current pressure
     public void display() {
-        if (currentPressure > lastPressure) {
-            System.out.println("Forecast: Improving weather on the way!");
-        } else if (currentPressure == lastPressure) {
-            System.out.println("Forecast: Weather is the same");
-        } else if (currentPressure < lastPressure) {
-            System.out.println("Forecast: Watch out for cooler, rainy weather!");
-        }
+        System.out.println("Forecast Details: Displaying information about Rain, " +
+                "Temperature Trends, Significant Weather Events and other phenomemnon...");
     }
 }

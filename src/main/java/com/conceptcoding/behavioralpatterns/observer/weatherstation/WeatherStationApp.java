@@ -1,5 +1,6 @@
 package com.conceptcoding.behavioralpatterns.observer.weatherstation;
 
+import com.conceptcoding.behavioralpatterns.observer.weatherstation.observable.WeatherObservable;
 import com.conceptcoding.behavioralpatterns.observer.weatherstation.observable.WeatherStation;
 import com.conceptcoding.behavioralpatterns.observer.weatherstation.observer.CurrentConditionsDisplay;
 import com.conceptcoding.behavioralpatterns.observer.weatherstation.observer.ForecastDisplay;
@@ -9,7 +10,7 @@ public class WeatherStationApp {
     public static void main(String[] args) {
         System.out.println("###### State Design Pattern ######");
         // Create the weather station (observable/subject)
-        WeatherStation weatherStation = new WeatherStation();
+        WeatherObservable weatherStation = new WeatherStation();
 
         // Create displays (observers)
         CurrentConditionsDisplay currentDisplay = new CurrentConditionsDisplay(weatherStation);

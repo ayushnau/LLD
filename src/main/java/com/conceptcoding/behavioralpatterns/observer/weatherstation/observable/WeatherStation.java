@@ -7,7 +7,7 @@ import java.util.List;
 
 // Concrete Observable (Subject)
 // WeatherStation - the concrete observable class that holds weather data
-public class WeatherStation implements WeatherPublisher {
+public class WeatherStation implements WeatherObservable {
     // List of observers registered for updates
     private final List<WeatherObserver> observers;
     // Observable Data
@@ -35,8 +35,7 @@ public class WeatherStation implements WeatherPublisher {
     public void notifyObservers() {
         for (WeatherObserver observer : observers) {
             // Notify each observer about the change in weather data(state)
-            observer.update(this); // this - Observer fetches required data using getters
-            // Observer will update its state based on the new data and respond accordingly
+            observer.update(); // Observer will update its state based on the new data and respond accordingly
         }
     }
 
@@ -59,5 +58,14 @@ public class WeatherStation implements WeatherPublisher {
 
     public float getPressure() {
         return pressure;
+    }
+
+    @Override
+    public String toString() {
+        return "WeatherStation{" +
+                "temperature=" + temperature +
+                ", humidity=" + humidity +
+                ", pressure=" + pressure +
+                '}';
     }
 }
