@@ -8,12 +8,7 @@ import java.util.Optional;
 
 // Step 2b: Concrete State - SelectionState
 // When the customer is selecting a product
-public class SelectionState implements VendingMachineState {
-
-    @Override
-    public void beginTransaction(VendingMachine vendingMachine) throws Exception {
-        throw new Exception("You have already begun a transaction. Cancel to end the transaction.");
-    }
+public class SelectionState extends VendingMachineState {
 
     @Override
     public void chooseProduct(VendingMachine vendingMachine, String productCode) throws Exception {
@@ -34,15 +29,6 @@ public class SelectionState implements VendingMachineState {
         vendingMachine.setSelectedProduct(selectedProduct.get());
         vendingMachine.setCurrentState(new CollectMoneyState());
     }
-
-    @Override
-    public void insertCoin(VendingMachine vendingMachine, Double amount) throws Exception {
-        throw new Exception("You cannot before you choose a product.");
-    }
-
-    @Override
-    public void dispenseProduct(VendingMachine vendingMachine) throws Exception {
-        throw new Exception("Product cannot be dispensed in SelectionState. Select a product first and pay.");
-    }
+    
 }
 

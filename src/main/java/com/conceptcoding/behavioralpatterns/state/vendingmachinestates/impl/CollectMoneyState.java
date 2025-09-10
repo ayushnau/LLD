@@ -5,16 +5,7 @@ import com.conceptcoding.behavioralpatterns.state.vendingmachinestates.VendingMa
 
 // Step 2c: Concrete State - CollectMoneyState
 // When the customer makes the payment for selected product
-public class CollectMoneyState implements VendingMachineState {
-    @Override
-    public void beginTransaction(VendingMachine vendingMachine) throws Exception {
-        throw new Exception("Transaction already in progress. Cancel to end the transaction.");
-    }
-
-    @Override
-    public void chooseProduct(VendingMachine vendingMachine, String codeNumber) throws Exception {
-        throw new Exception("Product cannot be chosen in HasMoneyState. You need to begin transaction first.");
-    }
+public class CollectMoneyState extends VendingMachineState {
 
     @Override
     public void insertCoin(VendingMachine vendingMachine, Double amountPaid) throws Exception {
@@ -28,10 +19,6 @@ public class CollectMoneyState implements VendingMachineState {
         vendingMachine.setPaymentMade(amountPaid);
         vendingMachine.setCurrentState(new DispenseState());
     }
-
-    @Override
-    public void dispenseProduct(VendingMachine vendingMachine) throws Exception {
-        throw new Exception("Product cannot be dispensed in CollectMoneyState. You need to pay first.");
-    }
+    
 }
 

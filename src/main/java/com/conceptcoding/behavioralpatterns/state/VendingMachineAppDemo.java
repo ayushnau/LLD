@@ -29,7 +29,7 @@ public class VendingMachineAppDemo {
 
             //Negative Flow 1: User buys out of stock product
             // 5Star Quantity is 1
-            System.out.println("------------------------------------------------------------------------------------");
+            /*System.out.println("------------------------------------------------------------------------------------");
             vendingMachine.beginTransaction();
             vendingMachine.chooseProduct("303"); // 5star - 50 rupees
             vendingMachine.insertCoin(35.00); // Change to be returned: 15 rupees
@@ -39,7 +39,7 @@ public class VendingMachineAppDemo {
             vendingMachine.beginTransaction();
             vendingMachine.chooseProduct("303"); // 5star - 50 rupees
             vendingMachine.insertCoin(35.00); // OUT OF STOCK exception: Refund 35 rupees
-            vendingMachine.dispenseProduct(); // This line will not execute
+            vendingMachine.dispenseProduct(); // This line will not execute*/
 
             // Negative Flow 2: User pays insufficient amount
             /*System.out.println("------------------------------------------------------------------------------------");
@@ -56,10 +56,10 @@ public class VendingMachineAppDemo {
             vendingMachine.dispenseProduct(); // this line will not execute*/
 
             // Negative Flow 4: User tries to buy product without beginning a transaction
-            /*System.out.println("------------------------------------------------------------------------------------");
+            System.out.println("------------------------------------------------------------------------------------");
             vendingMachine.chooseProduct("201"); // throws exception
             // vendingMachine.insertCoin(50.00); // throws exception
-            // vendingMachine.dispenseProduct(); // throws exception*/
+            // vendingMachine.dispenseProduct(); // throws exception
 
         } catch (Exception e) {
             System.out.println(e.getMessage());

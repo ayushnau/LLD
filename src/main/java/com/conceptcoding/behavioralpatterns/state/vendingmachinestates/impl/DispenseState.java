@@ -5,21 +5,7 @@ import com.conceptcoding.behavioralpatterns.state.vendingmachinestates.VendingMa
 
 // Step 2d: Concrete State - DispenseState
 // When machine is dispensing the product
-public class DispenseState implements VendingMachineState {
-    @Override
-    public void beginTransaction(VendingMachine vendingMachine) throws Exception {
-        throw new Exception("Transaction already in progress. Cancel to end the transaction.");
-    }
-
-    @Override
-    public void chooseProduct(VendingMachine vendingMachine, String productCode) throws Exception {
-        throw new Exception("Product cannot be chosen in DispenseState. You need to begin transaction first.");
-    }
-
-    @Override
-    public void insertCoin(VendingMachine vendingMachine, Double amountPaid) throws Exception {
-        throw new Exception("You cannot pay in DispenseState.  You need to begin transaction first.");
-    }
+public class DispenseState extends VendingMachineState {
 
     @Override
     public void dispenseProduct(VendingMachine vendingMachine) throws Exception {
@@ -33,5 +19,6 @@ public class DispenseState implements VendingMachineState {
                 .ifPresent(product -> product.setQuantity(product.getQuantity() - 1));
         vendingMachine.setCurrentState(new IdleState());
     }
+    
 }
 

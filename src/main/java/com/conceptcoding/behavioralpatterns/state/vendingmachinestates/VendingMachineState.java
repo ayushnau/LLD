@@ -2,14 +2,24 @@ package com.conceptcoding.behavioralpatterns.state.vendingmachinestates;
 
 import com.conceptcoding.behavioralpatterns.state.context.VendingMachine;
 
-// Step 1: Define the State interface
+// Step 1: Define the State interface(abstract class)
 // All states will implement this interface
-public interface VendingMachineState {
-    void beginTransaction(VendingMachine vendingMachine) throws Exception;
+public abstract class VendingMachineState {
 
-    void chooseProduct(VendingMachine vendingMachine, String productCode) throws Exception;
+    public void beginTransaction(VendingMachine vendingMachine) throws Exception {
+        throw new Exception("Transaction already in progress. Cancel to end the transaction.");
+    }
 
-    void insertCoin(VendingMachine vendingMachine, Double amount) throws Exception;
+    public void chooseProduct(VendingMachine vendingMachine, String productCode) throws Exception {
+        throw new Exception("Product cannot be chosen in DispenseState. You need to begin transaction first.");
+    }
 
-    void dispenseProduct(VendingMachine vendingMachine) throws Exception;
+    public void insertCoin(VendingMachine vendingMachine, Double amountPaid) throws Exception {
+        throw new Exception("You cannot pay in DispenseState.  You need to begin transaction first.");
+    }
+
+    public void dispenseProduct(VendingMachine vendingMachine) throws Exception {
+        throw new Exception("Product cannot be dispensed in CollectMoneyState. You need to pay first.");
+    }
+    
 }
