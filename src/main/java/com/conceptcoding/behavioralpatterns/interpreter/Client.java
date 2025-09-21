@@ -7,32 +7,43 @@ public class Client {
 
         // Context
         Context context = new Context();
-        context.setVariable("x", 12);
-        context.setVariable("y", 5);
-        context.setVariable("z", 3);
+        context.setVariable("a", 12);
+        context.setVariable("b", 5);
+        context.setVariable("c", 3);
+        context.setVariable("d", 9);
         System.out.println("Context: " + context);
 
-        // Expression: x + y
+        // Expression: a + b
         AbstractExpression expression1 = new AddNonTerminalExpression(
-                new NumberTerminalExpression("x"),
-                new NumberTerminalExpression("y"));
-        System.out.println("Expression: (x+y) = " + expression1.interpret(context)); // Output: 17
+                new NumberTerminalExpression("a"),
+                new NumberTerminalExpression("b"));
+        System.out.println("Expression: (a+b) = " + expression1.interpret(context)); // Output: 17
 
-        // Expression: x * y
+        // Expression: a * b
         AbstractExpression expression2 = new MultiplyNonTerminalExpression(
-                new NumberTerminalExpression("x"),
-                new NumberTerminalExpression("y")
+                new NumberTerminalExpression("a"),
+                new NumberTerminalExpression("b")
         );
-        System.out.println("Expression: (x*y) = " + expression2.interpret(context)); // Output: 60
+        System.out.println("Expression: (a*b) = " + expression2.interpret(context)); // Output: 60
 
-        // Complex Expression: (x + y) * z
+        // Complex Expression: (a + b) * c
         AbstractExpression expression3 = new MultiplyNonTerminalExpression(
                 new AddNonTerminalExpression(
-                        new NumberTerminalExpression("x"),
-                        new NumberTerminalExpression("y")
+                        new NumberTerminalExpression("a"),
+                        new NumberTerminalExpression("b")
                 ),
-                new NumberTerminalExpression("z")
+                new NumberTerminalExpression("c")
         );
-        System.out.println("Expression: ((x+y)*z) = " + expression3.interpret(context)); // Output: 51
+        System.out.println("Expression: ((a+b)*c) = " + expression3.interpret(context)); // Output: 51
+
+        // Expression: ((a*b) + (c*d))
+        AbstractExpression expression4 = new BinaryNonTerminalExpression(
+                new BinaryNonTerminalExpression(
+                        new NumberTerminalExpression("a"), new NumberTerminalExpression("b"), '*'),
+                new BinaryNonTerminalExpression(
+                        new NumberTerminalExpression("c"), new NumberTerminalExpression("d"), '*'),
+                '+');
+        System.out.println("Expression: ((a*b) + (c*d)) = " + expression4.interpret(context));
+
     }
 }
