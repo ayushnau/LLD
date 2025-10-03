@@ -24,17 +24,15 @@ public class Demo {
     }
 
     private static void printVehicleDetails(Vehicle vehicle) {
-        if (vehicle instanceof Car) {
+        if (vehicle instanceof Car car) {
             System.out.print("\n[+] Vehicle Details: ");
-            Car car = (Car) vehicle;
             System.out.println(car.getClass().getSimpleName() + " [Model=" + car.getModel()
                     + ", Color=" + car.getColor() + ", Seating Capacity=" + car.getSeatingCapacity()
                     + ", Fuel Tank Capacity=" + car.getFuelTankCapacity() + "]");
 
         }
-        if (vehicle instanceof Bike) {
+        if (vehicle instanceof Bike bike) {
             System.out.print("\n[+] Vehicle Details: ");
-            Bike bike = (Bike) vehicle;
             System.out.println(bike.getClass().getSimpleName() + " [Model=" + bike.getModel()
                     + ", Color=" + bike.getColor() + ", Fuel Tank Capacity=" + bike.getFuelTankCapacity() + "]");
         }
