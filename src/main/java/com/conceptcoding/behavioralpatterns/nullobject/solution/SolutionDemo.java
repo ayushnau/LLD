@@ -4,7 +4,7 @@ import com.conceptcoding.behavioralpatterns.nullobject.Bike;
 import com.conceptcoding.behavioralpatterns.nullobject.Car;
 import com.conceptcoding.behavioralpatterns.nullobject.Vehicle;
 
-public class Demo {
+public class SolutionDemo {
     public static void main(String[] args) {
         System.out.println("\n##### Null Object Pattern: Solution Demo #####");
 
