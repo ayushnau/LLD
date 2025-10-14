@@ -5,6 +5,7 @@ import com.conceptcoding.interviewquestions.parkinglot.payment.Payment;
 import com.conceptcoding.interviewquestions.parkinglot.vehicles.Vehicle;
 
 import java.time.LocalTime;
+import java.util.Random;
 
 public class Ticket {
     private static int counter = 10_000;
@@ -12,10 +13,9 @@ public class Ticket {
     private int ticketNo;
     private LocalTime entryTime;
     private LocalTime exitTime;
-    private double amount;
+    private double parkingFee;
     private ParkingSpot parkingSpot;
     private Vehicle vehicle;
-
 
     public Ticket(ParkingSpot spot, Vehicle vehicle) {
         this.ticketNo = ++counter;
@@ -51,12 +51,12 @@ public class Ticket {
         this.exitTime = exitTime;
     }
 
-    public double getAmount() {
-        return amount;
+    public double getParkingFee() {
+        return parkingFee;
     }
 
-    public void setAmount(double amount) {
-        this.amount = amount;
+    public void setParkingFee(double parkingFee) {
+        this.parkingFee = parkingFee;
     }
 
     public ParkingSpot getParkingSpot() {
@@ -79,4 +79,18 @@ public class Ticket {
         this.payment = payment;
     }
 
+    public double getParkingDuration() {
+        /*
+        Correct Way:
+        double hours = Duration.between(entryTime, exitTime).toHours();
+        */
+        double hours = getParkingTimeInHours();
+        return hours;
+    }
+
+    private int getParkingTimeInHours() {
+        // simulate parking time
+        Random random = new Random();
+        return random.nextInt(2, 5);
+    }
 }

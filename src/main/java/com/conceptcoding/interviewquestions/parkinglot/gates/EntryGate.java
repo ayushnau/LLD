@@ -1,34 +1,28 @@
 package com.conceptcoding.interviewquestions.parkinglot.gates;
 
-import com.conceptcoding.interviewquestions.parkinglot.parkingspots.NullSpot;
-import com.conceptcoding.interviewquestions.parkinglot.parkingspots.ParkingSpot;
-import com.conceptcoding.interviewquestions.parkinglot.parkingstrategy.ParkingStrategy;
+import com.conceptcoding.interviewquestions.parkinglot.parkingspots.ParkingSpotManager;
 import com.conceptcoding.interviewquestions.parkinglot.vehicles.Vehicle;
 
-public class EntryGate {
-    private ParkingStrategy parkingStrategy;
-    private int ticketCounter;
+import java.util.Optional;
 
-    public EntryGate(ParkingStrategy parkingStrategy) {
-        this.parkingStrategy = parkingStrategy;
-        this.ticketCounter = 0;
+public class EntryGate {
+
+    private ParkingSpotManager parkingSpotManager;
+
+    public EntryGate() {
+        this.parkingSpotManager = ParkingSpotManager.getInstance();
     }
 
     public Ticket issueTicket(Vehicle vehicle) {
-        ParkingSpot spot = parkingStrategy.findAvailableSpot(vehicle.getVehicleType());
+        // Finds the ParkingSpot, assigns the Vehicle to it and generates a Ticket
+        Ticket ticketIssued = Optional.ofNullable(parkingSpotManager.parkVehicle(vehicle))
+                .orElseThrow(() -> new RuntimeException("[-] No available parking spot for vehicle: " + vehicle.getVehicleNo()));
 
-        if (spot instanceof NullSpot) {
-            System.out.println("[-] No available parking spot for vehicle: " + vehicle.getVehicleNo());
-            System.exit(0);
-        }
-        spot.assignVehicleToParkingSpot(vehicle);
-        ticketCounter++;
-        Ticket ticket = new Ticket(spot, vehicle);
+        System.out.println("[+] Parking Ticket Issued: " + ticketIssued.getTicketNo()
+                + " for Vehicle " + vehicle.getVehicleNo() + " at Spot: " + ticketIssued.getParkingSpot().getSpotId());
 
-        System.out.println("[+] Parking Ticket Issued: " + ticket.getTicketNo()
-                + " for Vehicle " + vehicle.getVehicleNo() + " at Spot: " + spot.getSpotId());
+        System.out.println("[+] Available Spots: " + parkingSpotManager.getAvailableSpotsCount());
 
-        return ticket;
+        return ticketIssued;
     }
-
 }

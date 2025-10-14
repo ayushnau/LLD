@@ -7,11 +7,8 @@ import com.conceptcoding.interviewquestions.parkinglot.gates.ExitGate;
 import com.conceptcoding.interviewquestions.parkinglot.gates.Ticket;
 import com.conceptcoding.interviewquestions.parkinglot.parkingspots.ParkingSpotFactory;
 import com.conceptcoding.interviewquestions.parkinglot.parkingspots.ParkingSpotManager;
-import com.conceptcoding.interviewquestions.parkinglot.parkingstrategy.FirstAvailableParkingStrategy;
-import com.conceptcoding.interviewquestions.parkinglot.parkingstrategy.ParkingStrategy;
 import com.conceptcoding.interviewquestions.parkinglot.pricing.CostCalculator;
 import com.conceptcoding.interviewquestions.parkinglot.pricing.HourlyPricingStrategy;
-import com.conceptcoding.interviewquestions.parkinglot.pricing.PricingStrategy;
 import com.conceptcoding.interviewquestions.parkinglot.vehicles.Car;
 import com.conceptcoding.interviewquestions.parkinglot.vehicles.Motorcycle;
 import com.conceptcoding.interviewquestions.parkinglot.vehicles.Truck;
@@ -19,6 +16,7 @@ import com.conceptcoding.interviewquestions.parkinglot.vehicles.Vehicle;
 
 public class ParkingLotDemo {
     public static void main(String[] args) {
+        System.out.println("\n###### LLD ParkingLot Implementation ######");
         ParkingSpotManager spotManager = ParkingSpotManager.getInstance();
 
         // Create parking spots using factory
@@ -27,15 +25,16 @@ public class ParkingLotDemo {
         spotManager.addParkingSpot(ParkingSpotFactory.createParkingSpot("L1", VehicleType.LARGE_VEHICLE));
 
         // Initialize pricing strategy
-        PricingStrategy pricingStrategy = new HourlyPricingStrategy(10.0);
-        CostCalculator costCalculator = new CostCalculator(pricingStrategy);
-
-        // Initialize parking strategy
-        ParkingStrategy parkingStrategy = new FirstAvailableParkingStrategy(spotManager);
+        CostCalculator costCalculator = new CostCalculator(new HourlyPricingStrategy());
+        spotManager.setCostCalculator(costCalculator);
 
         // Create gates
-        EntryGate entryGate = new EntryGate(parkingStrategy);
-        ExitGate exitGate = new ExitGate(costCalculator);
+        EntryGate entryGate = new EntryGate();
+        ExitGate exitGate = new ExitGate();
+        spotManager.setEntryGate(entryGate);
+        spotManager.setExitGate(exitGate);
+
+        System.out.println("=====>>> Available Spots: " + spotManager.getAvailableSpotsCount());
 
         // Simulate parking
         Vehicle vehicle1 = new Motorcycle("KA-01-HH-5577");
@@ -48,9 +47,9 @@ public class ParkingLotDemo {
         Ticket ticket3 = entryGate.issueTicket(vehicle3);
 
         // Simulate exit
-        exitGate.processExit(ticket1, PaymentMode.CASH);
-        exitGate.processExit(ticket2, PaymentMode.UPI);
-        exitGate.processExit(ticket3, PaymentMode.CREDIT_CARD);
+        exitGate.processTicket(ticket1, PaymentMode.CASH);
+        exitGate.processTicket(ticket2, PaymentMode.UPI);
+        exitGate.processTicket(ticket3, PaymentMode.CREDIT_CARD);
 
     }
 }

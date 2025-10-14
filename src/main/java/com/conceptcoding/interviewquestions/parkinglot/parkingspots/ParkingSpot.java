@@ -7,16 +7,12 @@ public abstract class ParkingSpot {
     private String spotId;
     private boolean isAvailable;
     private Vehicle vehicle;
-    private double price;
-
-    ParkingSpot() {
-
-    }
+    private double basePrice;
 
     public ParkingSpot(String id, double price) {
         this.spotId = id;
         this.isAvailable = true;
-        this.price = price;
+        this.basePrice = price;
     }
 
     public abstract void assignVehicleToParkingSpot(Vehicle vehicle);
@@ -40,12 +36,12 @@ public abstract class ParkingSpot {
         isAvailable = available;
     }
 
-    public double getPrice() {
-        return price;
+    public double getBasePrice() {
+        return basePrice;
     }
 
-    public void setPrice(double price) {
-        this.price = price;
+    public void setBasePrice(double basePrice) {
+        this.basePrice = basePrice;
     }
 
     public Vehicle getVehicle() {
@@ -56,7 +52,7 @@ public abstract class ParkingSpot {
         this.vehicle = vehicle;
     }
 
-    public void removeVehicle() {
+    public void removeVehicleFromParkingSpot() {
         if (!isAvailable && vehicle != null) {
             System.out.println("[+] Parking Spot " + spotId + " freed.");
             vehicle = null;

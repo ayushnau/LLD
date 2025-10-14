@@ -10,10 +10,6 @@ public class CostCalculator {
     }
 
     public double calculateTicketCost(Ticket ticket) {
-        return pricingStrategy.calculateCost(ticket);
-    }
-
-    public void setPricingStrategy(PricingStrategy pricingStrategy) {
-        this.pricingStrategy = pricingStrategy;
+        return pricingStrategy.calculateParkingFee(ticket);
     }
 }

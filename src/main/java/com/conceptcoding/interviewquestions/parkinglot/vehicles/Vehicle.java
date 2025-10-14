@@ -6,7 +6,7 @@ import com.conceptcoding.interviewquestions.parkinglot.gates.Ticket;
 
 public abstract class Vehicle {
     private final String vehicleNo;
-    VehicleType vehicleType;
+    private VehicleType vehicleType;
     private Ticket ticket;
 
     public Vehicle(String vehicleNo, VehicleType vehicleType) {

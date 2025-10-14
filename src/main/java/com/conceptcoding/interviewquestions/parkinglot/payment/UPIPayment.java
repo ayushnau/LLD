@@ -1,10 +1,9 @@
 package com.conceptcoding.interviewquestions.parkinglot.payment;
 
-public class UPIPayment implements Payment {
-    protected double amount;
+public class UPIPayment extends Payment {
 
     public UPIPayment(double amt) {
-        this.amount = amt;
+        super(amt);
     }
 
     @Override

@@ -1,10 +1,9 @@
 package com.conceptcoding.interviewquestions.parkinglot.payment;
 
-public class CashPayment implements Payment {
-    protected double amount;
+public class CashPayment extends Payment {
 
     public CashPayment(double amt) {
-        this.amount = amt;
+        super(amt);
     }
 
     @Override

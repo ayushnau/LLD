@@ -5,7 +5,7 @@ import com.conceptcoding.interviewquestions.parkinglot.vehicles.Vehicle;
 
 public class LargeVehicleSpot extends ParkingSpot {
     public LargeVehicleSpot(String spotId) {
-        super(spotId, 40);
+        super(spotId, 30);
     }
 
     public void assignVehicleToParkingSpot(Vehicle vehicle) {

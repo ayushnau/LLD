@@ -2,24 +2,18 @@ package com.conceptcoding.interviewquestions.parkinglot.pricing;
 
 import com.conceptcoding.interviewquestions.parkinglot.gates.Ticket;
 
-import java.util.Random;
-
 public class PerMinutePricingStrategy implements PricingStrategy {
-    private double costPerMinute;
-
-    public PerMinutePricingStrategy(double costPerMinute) {
-        this.costPerMinute = costPerMinute;
-    }
+    private static final Double TWO_WHEELER_COST_PER_MINUTE = 0.5;
+    private static final Double FOUR_WHEELER_COST_PER_MINUTE = 0.75;
+    private static final Double LARGE_VEHICLE_COST_PER_MINUTE = 1.0;
 
     @Override
-    public double calculateCost(Ticket ticket) {
-        // double minutes = (ticket.getExitTime().getMinute() - ticket.getEntryTime().getMinute());
-        int minutes = getParkingTimeInMinutes();
-        return ticket.getParkingSpot().getPrice() + minutes * costPerMinute;
-    }
-
-    private int getParkingTimeInMinutes() {
-        Random random = new Random();
-        return random.nextInt(10, 91);
+    public double calculateParkingFee(Ticket ticket) {
+        double minutes = ticket.getParkingDuration() * 60;
+        return switch (ticket.getVehicle().getVehicleType()) {
+            case TWO_WHEELER -> ticket.getParkingSpot().getBasePrice() + minutes * TWO_WHEELER_COST_PER_MINUTE;
+            case FOUR_WHEELER -> ticket.getParkingSpot().getBasePrice() + minutes * FOUR_WHEELER_COST_PER_MINUTE;
+            case LARGE_VEHICLE -> ticket.getParkingSpot().getBasePrice() + minutes * LARGE_VEHICLE_COST_PER_MINUTE;
+        };
     }
 }

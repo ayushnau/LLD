@@ -3,5 +3,5 @@ package com.conceptcoding.interviewquestions.parkinglot.pricing;
 import com.conceptcoding.interviewquestions.parkinglot.gates.Ticket;
 
 public interface PricingStrategy {
-    double calculateCost(Ticket ticket);
+    double calculateParkingFee(Ticket ticket);
 }
