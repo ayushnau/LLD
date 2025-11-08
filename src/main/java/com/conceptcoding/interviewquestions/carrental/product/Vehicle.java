@@ -5,7 +5,7 @@ import java.util.Date;
 public class Vehicle {
 
     int vehicleID;
-    int vehicleNumber;
+    String vehicleNumber;
     VehicleType vehicleType;
     String companyName;
     String modelName;
@@ -26,11 +26,11 @@ public class Vehicle {
         this.vehicleID = vehicleID;
     }
 
-    public int getVehicleNumber() {
+    public String getVehicleNumber() {
         return vehicleNumber;
     }
 
-    public void setVehicleNumber(int vehicleNumber) {
+    public void setVehicleNumber(String vehicleNumber) {
         this.vehicleNumber = vehicleNumber;
     }
 
