@@ -28,11 +28,11 @@ public class Demo {
         User user5 = new User("User 5", "user5@example.com", ParticipantType.ATTENDEE);
         User user6 = new User("User 6", "user6@example.com", ParticipantType.ATTENDEE);
         User user7 = new User("User 7", "user7@example.com", ParticipantType.ATTENDEE);
-        participantsM1.put(user1, ParticipantResponse.NOT_RESPONDED);
         participantsM1.put(user2, ParticipantResponse.NOT_RESPONDED);
+        participantsM1.put(user3, ParticipantResponse.NOT_RESPONDED);
 
         // Create Meeting Scheduler
-        MeetingScheduler meetingScheduler = new MeetingScheduler(new Calendar(), rooms);
+        MeetingScheduler meetingScheduler = new MeetingScheduler(rooms);
 
         // Schedule Meeting
         LocalDateTime startTime = LocalDateTime.of(2022, 1, 22, 10, 0);
@@ -40,7 +40,6 @@ public class Demo {
         Meeting meeting1 = meetingScheduler.scheduleMeeting(user1, participantsM1, "Meeting 1-Requirement Planning", new TimeInterval(startTime, endTime));
 
         Map<User, ParticipantResponse> participantsM2 = new HashMap<>();
-        participantsM2.put(user3, ParticipantResponse.NOT_RESPONDED);
         participantsM2.put(user4, ParticipantResponse.NOT_RESPONDED);
         participantsM2.put(user5, ParticipantResponse.NOT_RESPONDED);
         participantsM2.put(user6, ParticipantResponse.NOT_RESPONDED);

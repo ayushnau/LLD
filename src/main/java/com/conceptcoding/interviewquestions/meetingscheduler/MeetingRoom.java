@@ -59,15 +59,6 @@ public class MeetingRoom {
         bookedSlots.remove(bookedSlot);
     }
 
-    public boolean isAvailable(TimeInterval timeInterval) {
-        for (TimeInterval bookedSlot : bookedSlots) {
-            if (bookedSlot.overlapsWith(timeInterval)) {
-                return false;
-            }
-        }
-        return true;
-    }
-
     public boolean isAvailableFor(TimeInterval interval, int requiredCapacity) {
         if (requiredCapacity > this.capacity) return false;
         for (TimeInterval timeInterval : bookedSlots) if (timeInterval.overlapsWith(interval)) return false;

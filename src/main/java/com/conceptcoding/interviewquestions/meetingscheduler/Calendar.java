@@ -5,7 +5,7 @@ import java.util.HashMap;
 import java.util.List;
 import java.util.Map;
 
-// User has his Calendar for the day
+// User has their Calendar for the day
 // A meeting room has its Calendar for the day
 public class Calendar {
 

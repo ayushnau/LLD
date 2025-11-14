@@ -4,11 +4,9 @@ import java.util.List;
 import java.util.Map;
 
 public class MeetingScheduler {
-    private Calendar calendar;
     private List<MeetingRoom> allMeetingRooms;
 
-    public MeetingScheduler(Calendar calendar, List<MeetingRoom> rooms) {
-        this.calendar = calendar;
+    public MeetingScheduler(List<MeetingRoom> rooms) {
         this.allMeetingRooms = rooms;
     }
 
@@ -29,32 +27,33 @@ public class MeetingScheduler {
             user.getCalendar().addMeeting(meeting);
         }
         // Add meeting to meeting room calendar
-        bookSlot(room, timeInterval, meeting);
+        bookSlot(room, meeting);
 
         // Notify participants
-        notifyParticipants(meeting);
+        notifyParticipantsWithInvites(meeting);
+        simulateUserResponsesForInvites(meeting);
         System.out.println("[+] Meeting scheduled successfully!!");
 
         return meeting;
     }
 
+    public void cancelMeeting(Meeting meeting) {
+        System.out.println("\n===>>> Cancelling meeting: " + meeting.getMeetingId() + " - " + meeting.getSubject());
+        releaseSlot(meeting.getMeetingRoom(), meeting);
+
+        // Notify participants
+        notifyParticipantsAboutMeetingCancellation(meeting);
+    }
+
+    private void simulateUserResponsesForInvites(Meeting meeting) {
+        for (User user : meeting.getAttendees().keySet()) {
+            user.respondToInvitation(user, meeting, ParticipantResponse.ACCEPTED);
+        }
+    }
+
     private String getMeetingId() {
         String str = String.valueOf(System.currentTimeMillis());
         return "MTS-" + str.substring(9, 13);
-    }
-
-    public void cancelMeeting(Meeting meeting) {
-        System.out.println("\n===>>> Cancelling meeting: " + meeting.getMeetingId() + " - " + meeting.getSubject());
-        this.calendar.removeMeeting(meeting);
-        releaseSlot(meeting.getMeetingRoom(), meeting.getTimeInterval(), meeting);
-
-        // Send notification and Remove meeting from participants calendar from accepted participants calendar
-        Notification notification = new Notification(2, "Meeting Cancelled: " + meeting.getMeetingId() + " - " + meeting.getSubject());
-        meeting.getOrganizer().getCalendar().removeMeeting(meeting);
-        for (User user : meeting.getAcceptedParticipants()) {
-            user.getCalendar().removeMeeting(meeting);
-            notification.sendCancelMeetingNotification(user, meeting);
-        }
     }
 
     public void addMeetingRoom(MeetingRoom meetingRoom) {
@@ -65,22 +64,32 @@ public class MeetingScheduler {
         this.allMeetingRooms.remove(meetingRoom);
     }
 
-    public void notifyParticipants(Meeting meeting) {
+    private void notifyParticipantsWithInvites(Meeting meeting) {
         Notification notification = new Notification(1, "Meeting Invitation: " + meeting.getSubject());
-
+        meeting.getOrganizer().getCalendar().addMeeting(meeting);
         for (User user : meeting.getAttendees().keySet()) {
+            user.getCalendar().addMeeting(meeting);
             notification.sendMeetingInviteNotification(user, meeting);
-            user.respondToInvitation(user, meeting, ParticipantResponse.ACCEPTED);
         }
     }
 
-    public void bookSlot(MeetingRoom room, TimeInterval interval, Meeting meeting) {
-        room.addBookedSlot(interval);
+    private void notifyParticipantsAboutMeetingCancellation(Meeting meeting) {
+        // Send notification and Remove meeting from participants calendar from accepted participants calendar
+        Notification notification = new Notification(2, "Meeting Cancelled: " + meeting.getMeetingId() + " - " + meeting.getSubject());
+        meeting.getOrganizer().getCalendar().removeMeeting(meeting);
+        for (User user : meeting.getAcceptedParticipants()) {
+            user.getCalendar().removeMeeting(meeting);
+            notification.sendCancelMeetingNotification(user, meeting);
+        }
+    }
+
+    public void bookSlot(MeetingRoom room, Meeting meeting) {
+        room.addBookedSlot(meeting.getTimeInterval());
         room.getCalendar().addMeeting(meeting);
     }
 
-    public void releaseSlot(MeetingRoom room, TimeInterval interval, Meeting meeting) {
-        room.removeBookedSlot(interval);
+    public void releaseSlot(MeetingRoom room, Meeting meeting) {
+        room.removeBookedSlot(meeting.getTimeInterval());
         room.getCalendar().removeMeeting(meeting);
     }
 
