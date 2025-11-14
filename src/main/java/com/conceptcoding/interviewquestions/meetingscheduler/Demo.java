@@ -8,6 +8,8 @@ import java.util.Map;
 
 public class Demo {
     public static void main(String[] args) {
+        System.out.println("\n###### LLD Code - Meeting Scheduler Demo ######");
+
         // Create Rooms
         MeetingRoom room1 = new MeetingRoom(1, "Room 1", 4);
         MeetingRoom room2 = new MeetingRoom(2, "Room 2", 8);

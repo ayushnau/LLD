@@ -96,7 +96,7 @@ public class Meeting {
 
     @Override
     public String toString() {
-        return "Meeting [meetingId=" + meetingId + ", subject=" + subject + ", organizer=" + organizer.getName() + "meetingRoom=" + meetingRoom.getName() + "]";
+        return "Meeting [meetingId=" + meetingId + ", subject=" + subject + ", organizer=" + organizer.getName() + ", meetingRoom=" + meetingRoom.getName() + "]";
     }
 
 }
