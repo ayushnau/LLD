@@ -21,14 +21,15 @@ public class Demo {
 
         // Create Users
         User user1 = new User("User 1", "user1@example.com", ParticipantType.ORGANIZER);
-        Map<User, ParticipantResponse> participants = new HashMap<>();
+        Map<User, ParticipantResponse> participantsM1 = new HashMap<>();
         User user2 = new User("User 2", "user2@example.com", ParticipantType.ATTENDEE);
         User user3 = new User("User 3", "user3@example.com", ParticipantType.ATTENDEE);
         User user4 = new User("User 4", "user4@example.com", ParticipantType.ATTENDEE);
         User user5 = new User("User 5", "user5@example.com", ParticipantType.ATTENDEE);
         User user6 = new User("User 6", "user6@example.com", ParticipantType.ATTENDEE);
-        participants.put(user1, ParticipantResponse.NOT_RESPONDED);
-        participants.put(user2, ParticipantResponse.NOT_RESPONDED);
+        User user7 = new User("User 7", "user7@example.com", ParticipantType.ATTENDEE);
+        participantsM1.put(user1, ParticipantResponse.NOT_RESPONDED);
+        participantsM1.put(user2, ParticipantResponse.NOT_RESPONDED);
 
         // Create Meeting Scheduler
         MeetingScheduler meetingScheduler = new MeetingScheduler(new Calendar(), rooms);
@@ -36,17 +37,20 @@ public class Demo {
         // Schedule Meeting
         LocalDateTime startTime = LocalDateTime.of(2022, 1, 22, 10, 0);
         LocalDateTime endTime = LocalDateTime.of(2022, 1, 22, 11, 0);
-        Meeting meeting1 = meetingScheduler.scheduleMeeting(user1, participants, "Meeting 1-Requirement Planning", new TimeInterval(startTime, endTime));
+        Meeting meeting1 = meetingScheduler.scheduleMeeting(user1, participantsM1, "Meeting 1-Requirement Planning", new TimeInterval(startTime, endTime));
 
-        participants.put(user3, ParticipantResponse.NOT_RESPONDED);
-        participants.put(user4, ParticipantResponse.NOT_RESPONDED);
-        participants.put(user5, ParticipantResponse.NOT_RESPONDED);
-        participants.put(user6, ParticipantResponse.NOT_RESPONDED);
+        Map<User, ParticipantResponse> participantsM2 = new HashMap<>();
+        participantsM2.put(user3, ParticipantResponse.NOT_RESPONDED);
+        participantsM2.put(user4, ParticipantResponse.NOT_RESPONDED);
+        participantsM2.put(user5, ParticipantResponse.NOT_RESPONDED);
+        participantsM2.put(user6, ParticipantResponse.NOT_RESPONDED);
+        participantsM2.put(user7, ParticipantResponse.NOT_RESPONDED);
 
-        Meeting meeting2 = meetingScheduler.scheduleMeeting(user1, participants, "Meeting 2-Effort Planning", new TimeInterval(startTime, endTime));
+        Meeting meeting2 = meetingScheduler.scheduleMeeting(user3, participantsM2, "Meeting 2-Effort Planning", new TimeInterval(startTime, endTime));
 
         // User's Calendar
         user1.viewCalendar();
+        user3.viewCalendar();
 
         // Meeting Room's Calendar
         meeting1.getMeetingRoom().viewCalendar();
@@ -58,6 +62,7 @@ public class Demo {
 
         // User's Calendar - empty
         user1.viewCalendar();
+        user3.viewCalendar();
 
         // Meeting Room's Calendar - empty
         meeting1.getMeetingRoom().viewCalendar();

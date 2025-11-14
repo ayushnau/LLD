@@ -16,10 +16,10 @@ public class MeetingScheduler {
         // Check for available meeting rooms with available time slots
         MeetingRoom room = checkForAvailableRooms(participants.size(), timeInterval);
         if (room == null) {
-            System.out.println("[x] No available meeting room");
+            System.out.println("===>>> No available meeting room");
             return null;
         }
-        System.out.println("\n[+] Available meeting room found");
+        System.out.println("\n===>>> Available meeting room found");
         // Create meeting
         Meeting meeting = new Meeting(getMeetingId(), subject, timeInterval, organiser, participants, room);
 
@@ -40,18 +40,20 @@ public class MeetingScheduler {
 
     private String getMeetingId() {
         String str = String.valueOf(System.currentTimeMillis());
-        return "MTS-" + str.substring(8, 12);
+        return "MTS-" + str.substring(9, 13);
     }
 
     public void cancelMeeting(Meeting meeting) {
-        System.out.println("\n[+] Cancelling meeting: " + meeting.getMeetingId() + " - " + meeting.getSubject());
+        System.out.println("\n===>>> Cancelling meeting: " + meeting.getMeetingId() + " - " + meeting.getSubject());
         this.calendar.removeMeeting(meeting);
         releaseSlot(meeting.getMeetingRoom(), meeting.getTimeInterval(), meeting);
 
-        // Remove meeting from participants calendar
+        // Send notification and Remove meeting from participants calendar from accepted participants calendar
+        Notification notification = new Notification(2, "Meeting Cancelled: " + meeting.getMeetingId() + " - " + meeting.getSubject());
         meeting.getOrganizer().getCalendar().removeMeeting(meeting);
         for (User user : meeting.getAcceptedParticipants()) {
-            user.getCalendar().removeMeeting(meeting); // from accepted participants calendar
+            user.getCalendar().removeMeeting(meeting);
+            notification.sendCancelMeetingNotification(user, meeting);
         }
     }
 
