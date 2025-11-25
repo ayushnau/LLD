@@ -2,9 +2,6 @@ package com.conceptcoding.interviewquestions.elevator;
 
 import com.conceptcoding.interviewquestions.elevator.enums.ElevatorDirection;
 
-import java.util.ArrayList;
-import java.util.Collections;
-import java.util.List;
 import java.util.concurrent.PriorityBlockingQueue;
 
 public class ElevatorController implements Runnable {
@@ -30,7 +27,10 @@ public class ElevatorController implements Runnable {
     private void enqueueRequest(int destinationFloor) {
         System.out.println("Request details-> destinationFloor: " + destinationFloor + " accepted by elevator:" + elevatorCar.id);
 
-        if (destinationFloor >= elevatorCar.currentFloor) {
+        if (destinationFloor == elevatorCar.nextFloorStoppage){
+            return;
+        }
+        if (destinationFloor >= elevatorCar.nextFloorStoppage) {
             if (!upMinPQ.contains(destinationFloor)) {
                 upMinPQ.offer(destinationFloor);
             }
