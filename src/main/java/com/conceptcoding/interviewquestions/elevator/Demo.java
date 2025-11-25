@@ -42,25 +42,33 @@ public class Demo {
 
 
 
-            // 7. submit requests
+            // Lets submit the requests
+            /*
+                1. External Call : Floor 3 UP
+                2. External Call : Floor 5 DOWN
+                3. Internal Call : Elevator 1 (press 4)
+                4. Internal Call : Elevator 1 (press 5)
+                5. External Call : Floor 1 DOWN
+                6. External Call : Floor 2 UP
+             */
 
             building.getFloor(3).pressUpButton();
-            Thread.sleep(10);
+            Thread.sleep(5);
 
             building.getFloor(5).pressDownButton();
-            Thread.sleep(10);
+            Thread.sleep(5);
 
             internalButton_for_elevator1.pressButton(4); // user inside elevator 1 presses floor 4
-            Thread.sleep(10);
+            Thread.sleep(5);
 
             internalButton_for_elevator1.pressButton(5); // user inside elevator 1 presses floor 5
-            Thread.sleep(10);
+            Thread.sleep(5);
 
             building.getFloor(1).pressDownButton();
-            Thread.sleep(10);
+            Thread.sleep(5);
 
             building.getFloor(2).pressUpButton();
-            Thread.sleep(10);
+            Thread.sleep(5);
 
             internalButton_for_elevator1.pressButton(2); // user inside elevator1 presses floor 2
         }

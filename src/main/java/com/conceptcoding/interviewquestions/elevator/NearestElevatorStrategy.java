@@ -16,15 +16,15 @@ public class NearestElevatorStrategy implements ElevatorSelectionStrategy {
 
         //1. Pick the one which is going in same direction and minimum distance from the destination
         for (ElevatorController controller : controllers) {
-            int currentFloor = controller.elevatorCar.currentFloor;
+            int nextFloorStoppage = controller.elevatorCar.nextFloorStoppage;
 
             // Good candidate if moving same direction & not passed requested floor
             boolean isSameDirectionCandidate =
                     controller.elevatorCar.movingDirection == direction &&
-                            ((direction == ElevatorDirection.UP && currentFloor <= requestFloor) ||
-                                    (direction == ElevatorDirection.DOWN && currentFloor >= requestFloor));
+                            ((direction == ElevatorDirection.UP && nextFloorStoppage <= requestFloor) ||
+                                    (direction == ElevatorDirection.DOWN && nextFloorStoppage >= requestFloor));
 
-            int dist = Math.abs(currentFloor - requestFloor);
+            int dist = Math.abs(nextFloorStoppage - requestFloor);
 
             if (isSameDirectionCandidate && dist < minDistance) {
                 minDistance = dist;
@@ -39,6 +39,11 @@ public class NearestElevatorStrategy implements ElevatorSelectionStrategy {
                     best = controller;
                     break;
                 }
+            }
+
+            //reached here means, no list is going in same direction and no lift is IDLE too, then pick any lift
+            if(best == null) {
+                best = controllers.get(0);
             }
         }
         return best;
