@@ -1,5 +1,6 @@
 package com.conceptcoding.interviewquestions.carrental;
 
+import java.util.ArrayList;
 import java.util.List;
 
 public class VehicleRentalSystem {
@@ -7,9 +8,10 @@ public class VehicleRentalSystem {
     List<Store> storeList;
     List<User> userList;
 
-    VehicleRentalSystem(List<Store> stores, List<User> users) {
-        this.storeList = stores;
-        this.userList = users;
+    public VehicleRentalSystem(){
+
+        storeList = new ArrayList<>();
+        userList = new ArrayList<>();
     }
 
     public Store getStore(int storeId) {
