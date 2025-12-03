@@ -34,3 +34,5 @@ public class Demo {
 // 3. Context is ShoppingCart which uses the Strategy
 // 4. Client is Demo which invokes the Shopping cart using strategy pattern. 
 // which basically invokes the strategy pattern at run time which is also called runtime strategy switching
+
+
