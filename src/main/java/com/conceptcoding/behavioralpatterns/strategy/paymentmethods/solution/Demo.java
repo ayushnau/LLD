@@ -26,3 +26,11 @@ public class Demo {
         // cart.checkout(400.0);
     }
 }
+
+
+// here
+// 1.  ConcreteStrategy are creditcard, paypal etc 
+// 2. interface is paymentStregy
+// 3. Context is ShoppingCart which uses the Strategy
+// 4. Client is Demo which invokes the Shopping cart using strategy pattern. 
+// which basically invokes the strategy pattern at run time which is also called runtime strategy switching
