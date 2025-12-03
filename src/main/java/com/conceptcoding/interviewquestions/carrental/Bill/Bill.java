@@ -1,5 +1,6 @@
 package com.conceptcoding.interviewquestions.carrental.Bill;
 
+
 public class Bill {
 
     private int billId;

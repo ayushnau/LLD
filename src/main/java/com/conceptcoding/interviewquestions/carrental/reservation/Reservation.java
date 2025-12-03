@@ -2,6 +2,7 @@ package com.conceptcoding.interviewquestions.carrental.reservation;
 
 import java.time.LocalDate;
 
+
 public class Reservation {
 
     private final int reservationId;

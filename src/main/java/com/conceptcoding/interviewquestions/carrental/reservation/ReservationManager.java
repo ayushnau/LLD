@@ -63,9 +63,7 @@ public class ReservationManager {
 
         inventory.release(
                 r.getVehicleId(),
-                r.getReservationId(),
-                r.getDateBookedFrom(),
-                r.getDateBookedTo());
+                r.getReservationId());
 
         reservationRepository.remove(reservationId);
     }
@@ -90,9 +88,7 @@ public class ReservationManager {
 
         inventory.release(
                 r.getVehicleId(),
-                r.getReservationId(),
-                r.getDateBookedFrom(),
-                r.getDateBookedTo()
+                r.getReservationId()
         );
     }
 

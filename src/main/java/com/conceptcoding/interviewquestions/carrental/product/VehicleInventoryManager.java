@@ -93,7 +93,7 @@ public class VehicleInventoryManager {
 
     // --------------- Atomic Release -----------------
 
-    public void release(int vehicleId, int reservationId, LocalDate from, LocalDate to) {
+    public void release(int vehicleId, int reservationId) {
 
         ReentrantLock lock = lockForVehicle(vehicleId);
         lock.lock();

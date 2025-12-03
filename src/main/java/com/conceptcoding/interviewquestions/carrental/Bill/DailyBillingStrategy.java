@@ -7,6 +7,7 @@ import com.conceptcoding.interviewquestions.carrental.reservation.Reservation;
 import java.time.temporal.ChronoUnit;
 import java.util.concurrent.atomic.AtomicInteger;
 
+
 public class DailyBillingStrategy implements BillingStrategy {
 
     VehicleInventoryManager vehicleInventoryManager;

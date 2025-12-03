@@ -83,6 +83,7 @@ public class Store {
         return payment;
     }
 
+
     public VehicleInventoryManager getInventory() {
         return inventory;
     }

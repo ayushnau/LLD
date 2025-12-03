@@ -5,3 +5,4 @@ public enum VehicleStatus {
     BOOKED,
     MAINTENANCE
 }
+

@@ -17,7 +17,6 @@ public class Vehicle {
         private int noOfSeat;
     */
 
-
     // --------- Constructors ---------
     public Vehicle(int vehicleID, String vehicleNumber, VehicleType vehicleType) {
         this.vehicleID = vehicleID;

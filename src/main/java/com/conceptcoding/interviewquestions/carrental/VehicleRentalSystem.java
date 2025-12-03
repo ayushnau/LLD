@@ -3,6 +3,15 @@ package com.conceptcoding.interviewquestions.carrental;
 import java.util.ArrayList;
 import java.util.List;
 
+/*
+we can also create, StoreManager class which takes
+Care of managing List of Stores, and this VehicleRentalSystem has StoreManager
+
+similarly we can also create UserManager, which takes
+care of managing list of Users, and this VehicleRentalSystem has UserManager
+
+for now for simplicity i am putting list of stores and list of Users in VehicleRentalSystem class.
+ */
 public class VehicleRentalSystem {
 
     List<Store> storeList;
