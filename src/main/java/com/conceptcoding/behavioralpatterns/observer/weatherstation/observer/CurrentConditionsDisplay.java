@@ -3,6 +3,8 @@ package com.conceptcoding.behavioralpatterns.observer.weatherstation.observer;
 import com.conceptcoding.behavioralpatterns.observer.weatherstation.observable.WeatherObservable;
 
 // Concrete Observer 1 - Current Conditions Display (on TV or Mobile)
+// this is pull model where the observer is also aware of observable.
+
 public class CurrentConditionsDisplay implements WeatherObserver {
     private final WeatherObservable weatherStation;
 

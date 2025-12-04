@@ -6,6 +6,7 @@ import com.conceptcoding.behavioralpatterns.observer.notifymefeature.observer.Em
 import com.conceptcoding.behavioralpatterns.observer.notifymefeature.observer.PushNotificationObserver;
 import com.conceptcoding.behavioralpatterns.observer.notifymefeature.observer.StockNotificationObserver;
 
+// this is the pull model where the observer is not aware of the Observable. 
 public class ECommerceStockNotificationApp {
     public static void main(String[] args) {
         System.out.println("-----------------------------------------------------------------------------");

@@ -6,6 +6,8 @@ import com.conceptcoding.behavioralpatterns.observer.weatherstation.observer.Cur
 import com.conceptcoding.behavioralpatterns.observer.weatherstation.observer.ForecastDisplay;
 
 // Client code to demonstrate the Observer Pattern
+// this is the pull model where the Observer is aware of Observable and when it want 
+// data it can directly fetch from the Observer. 
 public class WeatherStationApp {
     public static void main(String[] args) {
         System.out.println("###### State Design Pattern ######");
