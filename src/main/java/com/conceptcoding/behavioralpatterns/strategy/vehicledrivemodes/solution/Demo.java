@@ -26,3 +26,11 @@ public class Demo {
         vehicle.drive();
     }
 }
+
+
+
+// 1. here Concrete Strategy are evdrive, normaldrive, sportsdrive 
+// 2. interface is driveStrategy
+// 3. context is goodsvehicle, hybridvehicle whose parent is vehicle. 
+// 4. client is demo.java which is invoking the strategy pattern while creating the constsructor
+// which means that once the object crated it will always use that. only. which is fixed strategy switching.
